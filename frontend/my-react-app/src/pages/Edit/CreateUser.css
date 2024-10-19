@@ -1,0 +1,82 @@
+.create-user-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Light background for contrast */
+}
+
+.create-user-box {
+    background-color: #ffffff; /* White background for the form */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 400px; /* Fixed width for better control */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.create-user-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+    font-size: 24px;
+}
+
+.success-message {
+    color: #4caf50; /* Green color for success messages */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: #f44336; /* Red color for error messages */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.input-container {
+    margin-bottom: 20px; /* Spacing between inputs */
+}
+
+.input-container input {
+    width: 100%; /* Full width for input fields */
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border for inputs */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Larger text for better readability */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.input-container input:focus {
+    border-color: #4caf50; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+input[type='file'] {
+    padding: 10px;
+}
+
+.dashboard-link {
+    color: #2196F3; /* Link color */
+    cursor: pointer; /* Pointer cursor for links */
+}
+
+.dashboard-link:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+}
+
+.create-user-box button {
+    width: 100%; /* Full width for the button */
+    padding: 10px;
+    background-color: #4caf50; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Larger text */
+    cursor: pointer; /* Pointer cursor for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.create-user-box button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}

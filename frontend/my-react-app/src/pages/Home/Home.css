@@ -1,0 +1,139 @@
+/* Main Home Layout */
+.home-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #E0EAFD 0%, #CFDEF3 100%); /* Light blue gradient */
+    min-height: 100vh; /* Ensures the gradient covers the full viewport height */
+    padding: 20px; /* Adds some padding around the content */
+}
+
+.body-div {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Profile Container Styles */
+.profile-container {
+    background-color: #f9f9f9; /* Light background for profile container */
+    padding: 40px; /* Increased padding for a thicker card */
+    border-radius: 15px; /* Slightly rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for more depth */
+    width: 450px; /* Wider card for a more spacious look */
+    text-align: center;
+    margin-top: 20px; /* Space above the profile container */
+    transition: transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.profile-container:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Profile Heading */
+.profile-container h2 {
+    margin-bottom: 25px; /* Increased space below the heading */
+    font-size: 28px; /* Larger font for prominence */
+    color: #333;
+}
+
+/* Profile Image Styles */
+.profile-pic {
+    border-radius: 50%; /* Circular image */
+    width: 250px; /* Increased size for the profile picture */
+    height: 250px; /* Same height for a perfect circle */
+    margin-bottom: 20px; /* Space below the image */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Profile Details Styles */
+.profile-details {
+    margin-top: 15px; /* Space above details */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center align items */
+}
+
+.profile-detail {
+    display: flex; /* Use flexbox for each detail */
+    justify-content: center; /* Center align items */
+    align-items: center; /* Center align items vertically */
+    margin-bottom: 10px; /* Space below each detail */
+    font-size: 20px; /* Larger font for better readability */
+    color: #333; /* Dark color for text */
+    width: 100%; /* Ensures it takes full width */
+}
+
+
+.profile-detail strong {
+    color: #4A90E2; /* Color for field labels */
+    font-size: 20px; /* Match the size of the user data */
+    margin-right: 5px; /* Space between label and value */
+}
+
+/* Header Component Styles */
+.header-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between left and right content */
+    padding: 20px;
+    background: linear-gradient(135deg, #4A90E2 0%, #002147 100%); /* Gradient from blue to dark blue */
+    color: #ffffff;
+    width: 100%; /* Full-width header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Make sure it's above other content */
+}
+
+.welcome {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center; /* Align items in a row */
+}
+
+img {
+    border-radius: 50%;
+    width: 50px; /* Adjusted size for header image */
+    height: 50px;
+    margin-right: 20px; /* Space between image and buttons */
+}
+
+.edit-btn, .logout-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Space between the buttons */
+}
+
+.edit-btn {
+    background-color: #FFA500;
+}
+
+.edit-btn:hover {
+    background-color: #FF8C00;
+}
+
+.logout-btn {
+    background-color: #D9534F;
+}
+
+.logout-btn:hover {
+    background-color: #C9302C;
+}
+
+/* Ensure the body doesn't overlap with the fixed header */
+body {
+    margin-top: 80px; /* Adjust according to header height */
+}

@@ -1,0 +1,122 @@
+/* General styles for the admin dashboard */
+.admin-dashboard {
+    font-family: 'Arial', sans-serif;
+    background-color: transparent; /* Light background for contrast */
+    color: #333; /* Dark text color */
+    padding: 20px;
+}
+
+/* Header styles */
+.admin-header {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center;
+    background-color: rgba(44, 62, 80, 0.8); 
+    color: white; /* White text */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Navigation styles */
+.admin-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pushes the nav section to the right */
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Space between profile and button */
+}
+
+.admin-profile-pic {
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    border-radius: 50%;
+    margin-right: 10px; /* Space between profile image and logout button */
+}
+
+/* Button styles */
+.create-user-button {
+    background-color: #27ae60; /* Green button */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-user-button:hover {
+    background-color: #219653; /* Darker green on hover */
+}
+
+/* Table styles */
+.user-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light border for rows */
+}
+
+/* Table header styles */
+.user-table th {
+    background-color: #34495e; /* Darker header background */
+    color: white; /* White text for header */
+}
+
+/* Table row styles */
+.user-table tr {
+    background-color: #f9f9f9; /* Light grey for table row background */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for table row */
+.user-table tr:hover {
+    background-color: #ecf0f1; /* Slightly darker grey on row hover */
+}
+
+/* Button container styles */
+.button-container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    gap: 10px; /* Add gap between buttons */
+}
+
+/* Button styles */
+.edit-btn, .delete-btn {
+    background-color: #2980b9; /* Blue button */
+    color: white; /* White text */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #2471a6; /* Darker blue on hover */
+}
+
+.delete-btn {
+    background-color: #e74c3c; /* Red button */
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.search-box {
+    padding: 10px; /* Padding for comfort */
+    width: 100%; /* Full width */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    margin: 0; /* Remove margin to eliminate gaps */
+}
+
