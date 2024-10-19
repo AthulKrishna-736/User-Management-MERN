@@ -16,13 +16,64 @@ function CreateUser() {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
+
+    //regex for validating user
+    const usernamePattern = /^[a-zA-Z0-9_]{4,30}$/
+    const emailPattern = /^[a-zA-Z0-9_]+@[a-zA-Z]+\.[a-zA-Z]+$/
+    const passPattern = /^[a-zA-Z0-9_]{6,18}$/
+    const phonePattern = /^[0-9]{10}$/    
+
     const handleUsername = (e) => setUsername(e.target.value);
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePhone = (e) => setPhone(e.target.value);
     const handlePass = (e) => setPassword(e.target.value);
     const handleProfileImage = (e) => setProfileImage(e.target.files[0]);
 
+    // Validation function
+    const validateForm = () => {
+        const newErrors = {};
+        let isValid = true;
+
+        // Validate username
+        if (!usernamePattern.test(username)) {
+            newErrors.usernameError = 'Username must be 4-30 characters long and can only contain letters, numbers, and underscores.';
+            isValid = false;
+        }
+
+        // Validate email
+        if (!emailPattern.test(email)) {
+            newErrors.emailError = 'Please enter a valid email address.';
+            isValid = false;
+        }
+
+        // Validate phone number
+        if (!phonePattern.test(phone)) {
+            newErrors.phoneError = 'Phone number must be exactly 10 digits.';
+            isValid = false;
+        }
+
+        // Validate password
+        if (!passPattern.test(password)) {
+            newErrors.passwordError = 'Password must be 6-18 characters long and can only contain letters, numbers, and underscores.';
+            isValid = false;
+        }
+
+        // Validate profile image (check if an image is selected)
+        if (!profileImage) {
+            newErrors.profileImageError = 'Profile image is required.';
+            isValid = false;
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };    
+
     const handleCreateUser = async() => {
+
+        if (!validateForm()) {
+            console.log('cant create user validation error')
+            return;  
+        }    
         console.log('Creating user...');
 
         // Create FormData object to send data
@@ -37,21 +88,7 @@ function CreateUser() {
 
        try {
         const token = localStorage.getItem('token')
-        console.log('token check form',token)
-
-
-        console.log('Username:', username);
-        console.log('Email:', email);
-        console.log('Phone:', phone);
-        console.log('Password:', password);
-        console.log('Profile Image:', profileImage);
-        console.log('formdata : ',formData)
-
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`);
-        }
-        
-        
+        console.log('token check form',token)        
 
         const response = await axios.post(`${BASE_URL}/admin/users`, formData, {
             headers: {

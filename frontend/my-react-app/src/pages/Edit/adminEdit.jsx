@@ -7,14 +7,23 @@ import './Edit.css';
 function EditProfile() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { userId } = useParams(); // Get the userId from the URL parameters
+    const { userId } = useParams(); 
     const [user, setUser] = useState(null);
     const [username, setUsername] = useState('');
     const [phone, setPhone] = useState('');
     const [profileImage, setProfileImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
+ 
+    // Error states for validation
+    const [usernameError, setUsernameError] = useState('');
+    const [phoneError, setPhoneError] = useState('');
+    const [imageError, setImageError] = useState('');
+
+    const usernamePattern = /^[a-zA-Z0-9_]{4,30}$/;
+    const phonePattern = /^[0-9]{10}$/;
 
     const fromEditButton = location.state?.fromEditButton || false;
+
     useEffect(() => {
         console.log('edit button check = ', fromEditButton)
         if(!fromEditButton){
@@ -42,13 +51,14 @@ function EditProfile() {
                 setUsername(response.data.username);
                 setPhone(response.data.phone);
                 setImagePreview(`${BASE_URL}/${response.data.profileImage.replace(/\\/g, '/')}`);
+
             } catch (error) {
                 console.error('Error fetching user data', error.message);
             }
         };
         
         fetchUserData();
-    }, [navigate, userId, fromEditButton]); // Include userId as a dependency
+    }, [navigate, userId, fromEditButton]); 
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -58,9 +68,46 @@ function EditProfile() {
         }
     };
 
+    //validating input fields here
+    const validateForm = () => {
+        let isValid = true;
+
+        // Username validation
+        if (!usernamePattern.test(username)) {
+            setUsernameError('Username must be 4-30 characters long and can only contain letters, numbers, and underscores.');
+            isValid = false;
+        } else {
+            setUsernameError('');
+        }
+
+        // Phone validation
+        if (!phonePattern.test(phone)) {
+            setPhoneError('Phone number must be exactly 10 digits.');
+            isValid = false;
+        } else {
+            setPhoneError('');
+        }
+
+        // Profile image validation (check if image is not selected)
+        if (!profileImage) {
+            setImageError('Profile image is required.');
+            isValid = false;
+        } else {
+            setImageError('');
+        }
+
+     return isValid;
+    };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            console.log('validation failed while editing user')
+            return;  
+        }
+
         const token = localStorage.getItem('token');
 
         const formData = new FormData();
@@ -99,6 +146,7 @@ function EditProfile() {
                             onChange={(e) => setUsername(e.target.value)}
                             required
                         />
+                        {usernameError && <span className="error">{usernameError}</span>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="phone">Phone:</label>
@@ -109,6 +157,7 @@ function EditProfile() {
                             onChange={(e) => setPhone(e.target.value)}
                             required
                         />
+                        {phoneError && <span className="error">{phoneError}</span>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="profileImage">Profile Picture:</label>
@@ -118,6 +167,7 @@ function EditProfile() {
                             accept="image/*"
                             onChange={handleImageChange}
                         />
+                        {imageError && <p className="error">{imageError}</p>}
                         {imagePreview && <img src={imagePreview} alt="Profile Preview" className="image-preview" />}
                     </div>
                     <button type="submit">Save Changes</button>
